@@ -42,15 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Container.cs" />
-    <Compile Include="DelegateActivator.cs" />
-    <Compile Include="Interface\IActivator.cs" />
-    <Compile Include="Interface\ILifetime.cs" />
+    <Compile Include="Lifetimes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReflectionActivator.cs" />
     <Compile Include="Registration.cs" />
-    <Compile Include="ResolutionContext.cs" />
-    <Compile Include="SingletonLifetime.cs" />
-    <Compile Include="TransientLifetime.cs" />
+    <Compile Include="TypeNotRegisteredException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

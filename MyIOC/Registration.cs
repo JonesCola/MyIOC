@@ -18,13 +18,51 @@ namespace MyIOC
     /// <summary>
     /// Initializes a new instance of the <see cref="Registration"/> class.
     /// </summary>
-    /// <param name="concreteType">the type to register</param>
-    public Registration(Type concreteType)
+    /// <param name="interfaceType">the interface type</param>
+    /// <param name="concreteObject">the type to register</param>
+    public Registration(object concreteObject, Type interfaceType)
     {
-      this.ConcreteType = concreteType;
-      this.Activator = new ReflectionActivator();
-      this.Lifetime = new TransientLifetime();
+      if (concreteObject == default(object))
+      {
+        throw new ArgumentNullException(nameof(concreteObject));
+      }
+
+      if (interfaceType == default(Type))
+      {
+        throw new ArgumentNullException(nameof(interfaceType));
+      }
+
+      this.InterfaceType = interfaceType;
+      this.ConcreteObject = concreteObject;
+      this.Lifetime = Lifetime.Singleton;
     }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Registration"/> class.
+    /// </summary>
+    /// <param name="interfaceType">the interface type</param>
+    /// <param name="concreteType">the type to register</param>
+    public Registration(Type concreteType, Type interfaceType)
+    {
+      if (concreteType == default(object))
+      {
+        throw new ArgumentNullException(nameof(concreteType));
+      }
+
+      if (interfaceType == default(Type))
+      {
+        throw new ArgumentNullException(nameof(interfaceType));
+      }
+
+      this.InterfaceType = interfaceType;
+      this.ConcreteType = concreteType;
+      this.Lifetime = Lifetime.Transient;
+    }
+
+    /// <summary>
+    /// Gets or sets the interface type
+    /// </summary>
+    public Type InterfaceType { get; set; }
 
     /// <summary>
     /// Gets the actual type
@@ -32,55 +70,13 @@ namespace MyIOC
     public Type ConcreteType { get; private set; }
 
     /// <summary>
-    /// Gets the activator
+    /// Gets or sets the instance of the object
     /// </summary>
-    public IActivator Activator { get; private set; }
+    public object ConcreteObject { get; set; }
 
     /// <summary>
     /// Gets the life-cycle tracking agent
     /// </summary>
-    public ILifetime Lifetime { get; private set; }
-
-    /// <summary>
-    /// describes how to activate
-    /// </summary>
-    /// <param name="activator">the activator to use</param>
-    /// <returns>the registration object</returns>
-    public Registration ActivateWith(IActivator activator)
-    {
-      this.Activator = activator;
-      return this;
-    }
-
-    /// <summary>
-    /// describes how to activate
-    /// </summary>
-    /// <param name="activator">the activator delegate</param>
-    /// <returns>the registration object</returns>
-    public Registration ActivateWith(Func<ResolutionContext, object> activator)
-    {
-      this.Activator = new DelegateActivator(activator);
-      return this;
-    }
-
-    /// <summary>
-    /// register as a singleton
-    /// </summary>
-    /// <returns>the registration object</returns>
-    public Registration Singleton()
-    {
-      this.Lifetime = new SingletonLifetime();
-      return this;
-    }
-
-    /// <summary>
-    /// register a transient
-    /// </summary>
-    /// <returns>returns the registration</returns>
-    public Registration Transient()
-    {
-      this.Lifetime = new TransientLifetime();
-      return this;
-    }
+    public Lifetime Lifetime { get; private set; }
   }
 }

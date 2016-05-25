@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MyIOC</name>
+    </assembly>
+    <members>
+        <member name="T:MyIOC.Container">
+            <summary>
+            the container class holds my dependencies
+            </summary>
+        </member>
+        <member name="F:MyIOC.Container.locker">
+            <summary>
+            my locking object
+            </summary>
+        </member>
+        <member name="F:MyIOC.Container.registrations">
+            <summary>
+            collection of registered dependencies
+            </summary>
+        </member>
+        <member name="M:MyIOC.Container.Register(System.Type,System.Type)">
+            <summary>
+            register a new type
+            </summary>
+            <param name="type">the type to add</param>
+            <param name="interfaceType">the interface type</param>
+            <returns>the registration</returns>
+        </member>
+        <member name="M:MyIOC.Container.Register``2">
+            <summary>
+            syntacticly nice way
+            </summary>
+            <typeparam name="TypeToRegister">the concrete type</typeparam>
+            <typeparam name="InterfaceType">the interface type to tie it to</typeparam>
+            <returns>the registration object</returns>
+        </member>
+        <member name="M:MyIOC.Container.RegisterSingleton``1(System.Object)">
+            <summary>
+            register a new type
+            </summary>
+            <typeparam name="T">the type to register</typeparam>
+            <param name="implementation">implementation of the registered object</param>
+            <returns>the registration object</returns>
+        </member>
+        <member name="M:MyIOC.Container.Resolve(System.Type)">
+            <summary>
+            resolve the type
+            </summary>
+            <param name="type">the type</param>
+            <returns>the created instance</returns>
+        </member>
+        <member name="M:MyIOC.Container.Resolve``1">
+            <summary>
+            Resolve the type
+            </summary>
+            <typeparam name="T">the type</typeparam>
+            <returns>the created type</returns>
+        </member>
+        <member name="M:MyIOC.Container.FindRegistration(System.Type)">
+            <summary>
+            find the registration of the given type
+            </summary>
+            <param name="type">the type to look for</param>
+            <returns>the registration</returns>
+        </member>
+        <member name="M:MyIOC.Container.GetInstance(MyIOC.Registration)">
+            <summary>
+            get the instance of the object from the registration
+            </summary>
+            <param name="registration">the registration</param>
+            <returns>the instance</returns>
+        </member>
+        <member name="T:MyIOC.Registration">
+            <summary>
+            the registration class
+            </summary>
+        </member>
+        <member name="M:MyIOC.Registration.#ctor(System.Object,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MyIOC.Registration"/> class.
+            </summary>
+            <param name="interfaceType">the interface type</param>
+            <param name="concreteObject">the type to register</param>
+        </member>
+        <member name="M:MyIOC.Registration.#ctor(System.Type,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MyIOC.Registration"/> class.
+            </summary>
+            <param name="interfaceType">the interface type</param>
+            <param name="concreteType">the type to register</param>
+        </member>
+        <member name="P:MyIOC.Registration.InterfaceType">
+            <summary>
+            Gets or sets the interface type
+            </summary>
+        </member>
+        <member name="P:MyIOC.Registration.ConcreteType">
+            <summary>
+            Gets the actual type
+            </summary>
+        </member>
+        <member name="P:MyIOC.Registration.ConcreteObject">
+            <summary>
+            Gets or sets the instance of the object
+            </summary>
+        </member>
+        <member name="P:MyIOC.Registration.Lifetime">
+            <summary>
+            Gets the life-cycle tracking agent
+            </summary>
+        </member>
+        <member name="T:MyIOC.TypeNotRegisteredException">
+            <summary>
+            the type was not registered
+            </summary>
+        </member>
+        <member name="M:MyIOC.TypeNotRegisteredException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MyIOC.TypeNotRegisteredException"/> class.
+            </summary>
+        </member>
+        <member name="M:MyIOC.TypeNotRegisteredException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MyIOC.TypeNotRegisteredException"/> class.
+            </summary>
+            <param name="message">the error message</param>
+        </member>
+        <member name="M:MyIOC.TypeNotRegisteredException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MyIOC.TypeNotRegisteredException"/> class.
+            </summary>
+            <param name="message">the error message</param>
+            <param name="innerException">the inner exception</param>
+        </member>
+        <member name="T:Lifetime">
+            <summary>
+            the different types of lifetimes
+            </summary>
+        </member>
+        <member name="F:Lifetime.Transient">
+            <summary>
+            the default is transient
+            </summary>
+        </member>
+        <member name="F:Lifetime.Singleton">
+            <summary>
+            there is only one implementation of this
+            </summary>
+        </member>
+    </members>
+</doc>

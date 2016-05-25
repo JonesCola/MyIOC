@@ -7,6 +7,7 @@ namespace MyIOC
   using System;
   using System.Collections.Generic;
   using System.Linq;
+  using System.Reflection;
   using System.Text;
   using System.Threading.Tasks;
 
@@ -29,25 +30,43 @@ namespace MyIOC
     /// register a new type
     /// </summary>
     /// <param name="type">the type to add</param>
+    /// <param name="interfaceType">the interface type</param>
     /// <returns>the registration</returns>
-    public Registration Register(Type type)
+    public Registration Register(Type type, Type interfaceType)
     {
       lock (locker)
       {
-        Registration registration = new Registration(type);
+        Registration registration = new Registration(type, interfaceType);
         this.registrations.Add(registration);
         return registration;
       }
     }
 
     /// <summary>
+    /// syntacticly nice way
+    /// </summary>
+    /// <typeparam name="TypeToRegister">the concrete type</typeparam>
+    /// <typeparam name="InterfaceType">the interface type to tie it to</typeparam>
+    /// <returns>the registration object</returns>
+    public Registration Register<TypeToRegister, InterfaceType>()
+    {
+      return this.Register(typeof(TypeToRegister), typeof(InterfaceType));
+    }
+
+    /// <summary>
     /// register a new type
     /// </summary>
     /// <typeparam name="T">the type to register</typeparam>
+    /// <param name="implementation">implementation of the registered object</param>
     /// <returns>the registration object</returns>
-    public Registration Register<T>()
+    public Registration RegisterSingleton<T>(object implementation)
     {
-      return this.Register(typeof(T));
+      lock (locker)
+      {
+        Registration registration = new Registration(implementation, typeof(T));
+        this.registrations.Add(registration);
+        return registration;
+      }
     }
 
     /// <summary>
@@ -58,8 +77,7 @@ namespace MyIOC
     public object Resolve(Type type)
     {
       Registration registration = this.FindRegistration(type);
-      ResolutionContext context = new ResolutionContext(registration, this.FindRegistration);
-      return context.GetInstance();
+      return this.GetInstance(registration);
     }
 
     /// <summary>
@@ -81,14 +99,42 @@ namespace MyIOC
     {
       lock (locker)
       {
-        Registration registration = this.registrations.FirstOrDefault(r => r.ConcreteType == type);
+        Registration registration = this.registrations.FirstOrDefault(r => r.ConcreteType == type || r.InterfaceType == type);
+
         if (registration == null)
         {
-          registration = this.Register(type);
+          throw new TypeNotRegisteredException($"No relationship could be found for {type.ToString()}");
         }
 
-      return registration;
+        return registration;
       }
+    }
+
+    /// <summary>
+    /// get the instance of the object from the registration
+    /// </summary>
+    /// <param name="registration">the registration</param>
+    /// <returns>the instance</returns>
+    private object GetInstance(Registration registration)
+    {
+      if (registration.ConcreteObject != null)
+      {
+        // the object was a singleton so return the cached object
+        return registration.ConcreteObject;
+      }
+
+      ConstructorInfo ctor = registration.ConcreteType.GetConstructors()
+                            .OrderByDescending(c => c.GetParameters().Length)
+                            .First();
+
+      var parameters = ctor.GetParameters();
+      var args = new object[parameters.Length];
+      for (int i = 0; i < args.Length; i++)
+      {
+        args[i] = this.Resolve(parameters[i].ParameterType);
+      }
+
+      return ctor.Invoke(args);
     }
   }
 }

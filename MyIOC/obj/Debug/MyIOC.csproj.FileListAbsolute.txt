@@ -1,0 +1,12 @@
+c:\users\jones\documents\visual studio 2015\Projects\MyIOC\MyIOC\bin\Debug\MyIOC.XML
+c:\users\jones\documents\visual studio 2015\Projects\MyIOC\MyIOC\bin\Debug\MyIOC.dll
+c:\users\jones\documents\visual studio 2015\Projects\MyIOC\MyIOC\bin\Debug\MyIOC.pdb
+c:\users\jones\documents\visual studio 2015\Projects\MyIOC\MyIOC\obj\Debug\MyIOC.csprojResolveAssemblyReference.cache
+c:\users\jones\documents\visual studio 2015\Projects\MyIOC\MyIOC\obj\Debug\MyIOC.dll
+c:\users\jones\documents\visual studio 2015\Projects\MyIOC\MyIOC\obj\Debug\MyIOC.pdb
+C:\Users\jones\Source\Repos\TowersWatson\MyIOC\MyIOC\bin\Debug\MyIOC.XML
+C:\Users\jones\Source\Repos\TowersWatson\MyIOC\MyIOC\bin\Debug\MyIOC.dll
+C:\Users\jones\Source\Repos\TowersWatson\MyIOC\MyIOC\bin\Debug\MyIOC.pdb
+C:\Users\jones\Source\Repos\TowersWatson\MyIOC\MyIOC\obj\Debug\MyIOC.csprojResolveAssemblyReference.cache
+C:\Users\jones\Source\Repos\TowersWatson\MyIOC\MyIOC\obj\Debug\MyIOC.dll
+C:\Users\jones\Source\Repos\TowersWatson\MyIOC\MyIOC\obj\Debug\MyIOC.pdb

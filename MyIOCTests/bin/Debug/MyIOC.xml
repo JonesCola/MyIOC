@@ -1,0 +1,334 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MyIOC</name>
+    </assembly>
+    <members>
+        <member name="T:MyIOC.Container">
+            <summary>
+            the container class holds my dependencies
+            </summary>
+        </member>
+        <member name="F:MyIOC.Container.locker">
+            <summary>
+            my locking object
+            </summary>
+        </member>
+        <member name="F:MyIOC.Container.registrations">
+            <summary>
+            collection of registered dependencies
+            </summary>
+        </member>
+        <member name="M:MyIOC.Container.Register(System.Type)">
+            <summary>
+            register a new type
+            </summary>
+            <param name="type">the type to add</param>
+            <returns>the registration</returns>
+        </member>
+        <member name="M:MyIOC.Container.Register``1">
+            <summary>
+            register a new type
+            </summary>
+            <typeparam name="T">the type to register</typeparam>
+            <returns>the registration object</returns>
+        </member>
+        <member name="M:MyIOC.Container.Resolve(System.Type)">
+            <summary>
+            resolve the type
+            </summary>
+            <param name="type">the type</param>
+            <returns>the created instance</returns>
+        </member>
+        <member name="M:MyIOC.Container.Resolve``1">
+            <summary>
+            Resolve the type
+            </summary>
+            <typeparam name="T">the type</typeparam>
+            <returns>the created type</returns>
+        </member>
+        <member name="M:MyIOC.Container.FindRegistration(System.Type)">
+            <summary>
+            find the registration of the given type
+            </summary>
+            <param name="type">the type to look for</param>
+            <returns>the registration</returns>
+        </member>
+        <member name="T:MyIOC.DelegateActivator">
+            <summary>
+            the delegate based activator
+            </summary>
+        </member>
+        <member name="F:MyIOC.DelegateActivator.activator">
+            <summary>
+            the activator delegate
+            </summary>
+        </member>
+        <member name="M:MyIOC.DelegateActivator.#ctor(System.Func{MyIOC.ResolutionContext,System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:MyIOC.DelegateActivator"/> class.
+            </summary>
+            <param name="activator">the delegate used for activation</param>
+        </member>
+        <member name="M:MyIOC.DelegateActivator.Activate(MyIOC.ResolutionContext)">
+            <summary>
+            Activate the object using the delegate
+            </summary>
+            <param name="context">the resolution context</param>
+            <returns>the activated instance</returns>
+        </member>
+        <member name="T:MyIOC.IActivator">
+            <summary>
+            the activator interface
+            </summary>
+        </member>
+        <member name="M:MyIOC.IActivator.Activate(MyIOC.ResolutionContext)">
+            <summary>
+            activate the instance
+            </summary>
+            <param name="context">the resolution context</param>
+            <returns>the activated object</returns>
+        </member>
+        <member name="T:MyIOC.ILifetime">
+            <summary>
+            the interface for the lifetime
+            </summary>
+        </member>
+        <member name="M:MyIOC.ILifetime.GetInstnce(MyIOC.ResolutionContext)">
+            <summary>
+            get the instance of the object from the resolution context
+            </summary>
+            <param name="context">the resolution context</param>
+            <returns>the object instance</returns>
+        </member>
+        <member name="T:MyIOC.IRegistration">
+            <summary>
+            the registration interface
+            </summary>
+        </member>
+        <member name="P:MyIOC.IRegistration.ConcreteType">
+            <summary>
+            Gets the actual type
+            </summary>
+        </member>
+        <member name="P:MyIOC.IRegistration.Activator">
+            <summary>
+            Gets the activator
+            </summary>
+        </member>
+        <member name="P:MyIOC.IRegistration.Lifetime">
+            <summary>
+            Gets the life-cycle tracking agent
+            </summary>
+        </member>
+        <member name="M:MyIOC.IRegistration.ActivateWith(MyIOC.IActivator)">
+            <summary>
+            describes how to activate
+            </summary>
+            <param name="activator">the activator to use</param>
+            <returns>the registration object</returns>
+        </member>
+        <member name="M:MyIOC.IRegistration.ActivateWith(System.Func{MyIOC.ResolutionContext,System.Object})">
+            <summary>
+            describes how to activate
+            </summary>
+            <param name="activator">the activator delegate</param>
+            <returns>the registration object</returns>
+        </member>
+        <member name="M:MyIOC.IRegistration.Singleton">
+            <summary>
+            register as a singleton
+            </summary>
+            <returns>the registration object</returns>
+        </member>
+        <member name="M:MyIOC.IRegistration.Transient">
+            <summary>
+            register a transient
+            </summary>
+            <returns>returns the registration</returns>
+        </member>
+        <member name="T:MyIOC.IResolutionContext">
+            <summary>
+            the interface for the resolution Context
+            </summary>
+        </member>
+        <member name="M:MyIOC.IResolutionContext.Activate">
+            <summary>
+            activate this object
+            </summary>
+            <returns>the activated dependency</returns>
+        </member>
+        <member name="M:MyIOC.IResolutionContext.GetInstance">
+            <summary>
+            get the activated instance
+            </summary>
+            <returns>the instance</returns>
+        </member>
+        <member name="M:MyIOC.IResolutionContext.ResolveDependency(System.Type)">
+            <summary>
+            Resolve the dependency
+            </summary>
+            <param name="type">the type to resolve</param>
+            <returns>the activated dependency</returns>
+        </member>
+        <member name="M:MyIOC.IResolutionContext.ResolveDependency``1">
+            <summary>
+            syntacticly nice way to do this
+            </summary>
+            <typeparam name="T">the type to resolve</typeparam>
+            <returns>the activated dependency</returns>
+        </member>
+        <member name="T:MyIOC.ReflectionActivator">
+            <summary>
+            activates the dependency using reflection
+            </summary>
+        </member>
+        <member name="M:MyIOC.ReflectionActivator.Activate(MyIOC.ResolutionContext)">
+            <summary>
+            Activate the context
+            </summary>
+            <param name="context">the resolution activator</param>
+            <returns>the instantiated object</returns>
+        </member>
+        <member name="T:MyIOC.Registration">
+            <summary>
+            the registration class
+            </summary>
+        </member>
+        <member name="M:MyIOC.Registration.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MyIOC.Registration"/> class.
+            </summary>
+            <param name="concreteType">the type to register</param>
+        </member>
+        <member name="P:MyIOC.Registration.ConcreteType">
+            <summary>
+            Gets the actual type
+            </summary>
+        </member>
+        <member name="P:MyIOC.Registration.Activator">
+            <summary>
+            Gets the activator
+            </summary>
+        </member>
+        <member name="P:MyIOC.Registration.Lifetime">
+            <summary>
+            Gets the life-cycle tracking agent
+            </summary>
+        </member>
+        <member name="M:MyIOC.Registration.ActivateWith(MyIOC.IActivator)">
+            <summary>
+            describes how to activate
+            </summary>
+            <param name="activator">the activator to use</param>
+            <returns>the registration object</returns>
+        </member>
+        <member name="M:MyIOC.Registration.ActivateWith(System.Func{MyIOC.ResolutionContext,System.Object})">
+            <summary>
+            describes how to activate
+            </summary>
+            <param name="activator">the activator delegate</param>
+            <returns>the registration object</returns>
+        </member>
+        <member name="M:MyIOC.Registration.Singleton">
+            <summary>
+            register as a singleton
+            </summary>
+            <returns>the registration object</returns>
+        </member>
+        <member name="M:MyIOC.Registration.Transient">
+            <summary>
+            register a transient
+            </summary>
+            <returns>returns the registration</returns>
+        </member>
+        <member name="T:MyIOC.ResolutionContext">
+            <summary>
+            hold the context resolution object
+            </summary>
+        </member>
+        <member name="F:MyIOC.ResolutionContext.registrationFinder">
+            <summary>
+            the registration finder
+            </summary>
+        </member>
+        <member name="F:MyIOC.ResolutionContext.parent">
+            <summary>
+            the parent (used to check for cyclic dependencies)
+            </summary>
+        </member>
+        <member name="M:MyIOC.ResolutionContext.#ctor(MyIOC.IRegistration,System.Func{System.Type,MyIOC.IRegistration})">
+            <summary>
+            Initializes a new instance of the <see cref="T:MyIOC.ResolutionContext"/> class.
+            </summary>
+            <param name="registration">the registration</param>
+            <param name="registrationFinder">describes how to find the registration</param>
+        </member>
+        <member name="P:MyIOC.ResolutionContext.Registration">
+            <summary>
+            Gets the registration instance
+            </summary>
+        </member>
+        <member name="M:MyIOC.ResolutionContext.Activate">
+            <summary>
+            activate this object
+            </summary>
+            <returns>the activated dependency</returns>
+        </member>
+        <member name="M:MyIOC.ResolutionContext.GetInstance">
+            <summary>
+            get the activated instance
+            </summary>
+            <returns>the instance</returns>
+        </member>
+        <member name="M:MyIOC.ResolutionContext.ResolveDependency(System.Type)">
+            <summary>
+            Resolve the dependency
+            </summary>
+            <param name="type">the type to resolve</param>
+            <returns>the activated dependency</returns>
+        </member>
+        <member name="M:MyIOC.ResolutionContext.ResolveDependency``1">
+            <summary>
+            syntacticly nice way to do this
+            </summary>
+            <typeparam name="T">the type to resolve</typeparam>
+            <returns>the activated dependency</returns>
+        </member>
+        <member name="M:MyIOC.ResolutionContext.CheckForCyclicalRefences(MyIOC.ResolutionContext)">
+            <summary>
+            check for cyclical references
+            </summary>
+            <param name="parent">the parent context</param>
+        </member>
+        <member name="T:MyIOC.SingletonLifetime">
+            <summary>
+            the singleton lifetime implementation
+            </summary>
+        </member>
+        <member name="F:MyIOC.SingletonLifetime.instance">
+            <summary>
+            cached instance
+            </summary>
+        </member>
+        <member name="M:MyIOC.SingletonLifetime.GetInstnce(MyIOC.ResolutionContext)">
+            <summary>
+            get the cached instance if it exists otherwise activate and cache it
+            </summary>
+            <param name="context">the context</param>
+            <returns>the instance</returns>
+        </member>
+        <member name="T:MyIOC.TransientLifetime">
+            <summary>
+            the transient lifetime
+            </summary>
+        </member>
+        <member name="M:MyIOC.TransientLifetime.GetInstnce(MyIOC.ResolutionContext)">
+            <summary>
+            get the instance of a transient object
+            </summary>
+            <param name="context">the context</param>
+            <returns>the activated instance</returns>
+        </member>
+    </members>
+</doc>
