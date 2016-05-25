@@ -16,7 +16,7 @@ namespace MyIOCTests
     /// the main test for my composition container
     /// </summary>
     [Fact]
-    public void TestComposition()
+    public void TestCompositionWithStatic()
     {
       string staticString = "new data";
       Container container = new Container();
@@ -29,6 +29,25 @@ namespace MyIOCTests
       controller.SetStaticData(staticString);
       controller = container.Resolve<TestController>();
       Assert.True(controller.GetStaticData() == staticString);
+    }
+
+    /// <summary>
+    /// the main test for my composition container
+    /// </summary>
+    [Fact]
+    public void TestCompositionWithTransient()
+    {
+      string staticString = "new data";
+      Container container = new Container();
+      container.Register<LegacyPart, ILegacyPart>();
+      container.Register<DataAccess, IDataAccess>();
+      container.Register<LogicLayer, ILogicLayer>();
+      container.Register<TestController, ITestController>();
+      container.Register<StaticPeice, IStaticPiece>(Lifetime.Transient);
+      TestController controller = container.Resolve<TestController>();
+      controller.SetStaticData(staticString);
+      controller = container.Resolve<TestController>();
+      Assert.True(controller.GetStaticData() != staticString);
     }
 
     /// <summary>

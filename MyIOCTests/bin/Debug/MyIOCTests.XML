@@ -9,7 +9,12 @@
             the main test class
             </summary>
         </member>
-        <member name="M:MyIOCTests.MyIOCTests.TestComposition">
+        <member name="M:MyIOCTests.MyIOCTests.TestCompositionWithStatic">
+            <summary>
+            the main test for my composition container
+            </summary>
+        </member>
+        <member name="M:MyIOCTests.MyIOCTests.TestCompositionWithTransient">
             <summary>
             the main test for my composition container
             </summary>

@@ -16,7 +16,7 @@ namespace EmployeeManagement.Models
     /// <summary>
     /// the data set
     /// </summary>
-    System.Data.Entity.DbSet<EmployeeManagement.Models.Employee> Employees { get; set; }
+    DbSet<Employee> Employees { get; set; }
 
     /// <summary>
     /// save changes

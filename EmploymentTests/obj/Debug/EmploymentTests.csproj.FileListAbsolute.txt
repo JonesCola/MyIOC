@@ -60,8 +60,6 @@ C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\obj\Debug\Employm
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\obj\Debug\EmploymentTests.dll
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\obj\Debug\EmploymentTests.pdb
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\Moq.dll
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\Moq.xml
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\xunit.runner.visualstudio.testadapter.dll
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\xunit.runner.utility.desktop.dll

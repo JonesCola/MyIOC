@@ -12,8 +12,9 @@ namespace EmployeeManagement.Models
     {
       context.Employees.AddRange(new Employee[]
         {
-          new Employee { FullName = "Aaron Baum", Number = 123, StartDate = DateTime.Now.AddMonths(2) },
+          new Employee { FullName = "Aaron Baum", Number = 123, StartDate = DateTime.Now.AddMonths(1) },
           new Employee { FullName = "Paul Stegler", Number = 777, StartDate = new DateTime(2016, 5, 1) },
+          new Employee { FullName = "Michael Henriquez", Number = 987, StartDate = new DateTime(2016, 6, 3) },
         });
     }
   }

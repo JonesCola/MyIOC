@@ -15,7 +15,14 @@ namespace EmployeeManagement.Controllers
     /// <summary>
     /// the database context
     /// </summary>
-    private IEmployeeManagementContext db;
+    private IEmployeeManagementContext db = new EmployeeManagementContext();
+
+    /// <summary>
+    /// default constructor
+    /// </summary>
+    public EmployeesController()
+    {
+    }
 
     /// <summary>
     /// the constructor for the controller

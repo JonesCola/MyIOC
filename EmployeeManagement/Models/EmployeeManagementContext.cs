@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 
@@ -18,6 +19,6 @@ namespace EmployeeManagement.Models
     /// <summary>
     /// the data set
     /// </summary>
-    public System.Data.Entity.DbSet<EmployeeManagement.Models.Employee> Employees { get; set; } 
+    public DbSet<Employee> Employees { get; set; }
   }
 }
