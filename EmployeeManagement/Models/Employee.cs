@@ -12,6 +12,11 @@ namespace EmployeeManagement.Models
   public class Employee
   {
     /// <summary>
+    /// the backing field for the start date
+    /// </summary>
+    private DateTime startDate;
+
+    /// <summary>
     /// the primary key
     /// </summary>
     public int ID { get; set; }
@@ -21,7 +26,7 @@ namespace EmployeeManagement.Models
     /// </summary>
     [Display(Name = "Full Name")]
     public string FullName { get; set; }
-  
+
     /// <summary>
     /// the employee number
     /// </summary>
@@ -30,8 +35,27 @@ namespace EmployeeManagement.Models
     /// <summary>
     /// the start date
     /// </summary>
+    [Display(AutoGenerateFilter = true)]
+    public DateTime StartDate
+    {
+      get { return this.startDate; }
+      set { this.startDate = value; }
+    }
+
+    /// <summary>
+    /// the Display Start Date
+    /// </summary>
     [Display(Name = "Start Date")]
-    ////[DataType(DataType.Date)]
-    public DateTime StartDate { get; set; }
+    public string DisplayStartDate
+    {
+      get
+      {
+        return this.startDate.ToShortDateString();
+      }
+      set
+      {
+        this.startDate = DateTime.Parse(value);
+      }
+    }
   }
 }

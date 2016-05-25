@@ -11,7 +11,7 @@ namespace MyIOC
   /// the type was not registered
   /// </summary>
   [Serializable]
-  internal class TypeNotRegisteredException : Exception
+  public class TypeNotRegisteredException : Exception
   {
     /// <summary>
     /// Initializes a new instance of the <see cref="TypeNotRegisteredException"/> class.

@@ -31,12 +31,13 @@ namespace MyIOC
     /// </summary>
     /// <param name="type">the type to add</param>
     /// <param name="interfaceType">the interface type</param>
+    /// <param name="lifetime">the liftime type</param>
     /// <returns>the registration</returns>
-    public Registration Register(Type type, Type interfaceType)
+    public Registration Register(Type type, Type interfaceType, Lifetime lifetime)
     {
       lock (locker)
       {
-        Registration registration = new Registration(type, interfaceType);
+        Registration registration = new Registration(type, interfaceType, lifetime);
         this.registrations.Add(registration);
         return registration;
       }
@@ -47,10 +48,11 @@ namespace MyIOC
     /// </summary>
     /// <typeparam name="TypeToRegister">the concrete type</typeparam>
     /// <typeparam name="InterfaceType">the interface type to tie it to</typeparam>
+    /// <param name="lifetime">the lifetime type, defaults to transient</param>
     /// <returns>the registration object</returns>
-    public Registration Register<TypeToRegister, InterfaceType>()
+    public Registration Register<TypeToRegister, InterfaceType>(Lifetime lifetime = Lifetime.Transient)
     {
-      return this.Register(typeof(TypeToRegister), typeof(InterfaceType));
+      return this.Register(typeof(TypeToRegister), typeof(InterfaceType), lifetime);
     }
 
     /// <summary>
@@ -134,7 +136,13 @@ namespace MyIOC
         args[i] = this.Resolve(parameters[i].ParameterType);
       }
 
-      return ctor.Invoke(args);
+      object ret = ctor.Invoke(args);
+      if (registration.ConcreteObject == null && registration.Lifetime == Lifetime.Singleton)
+      {
+        registration.ConcreteObject = ret;
+      }
+
+      return ret;
     }
   }
 }

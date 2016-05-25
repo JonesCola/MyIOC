@@ -42,7 +42,8 @@ namespace MyIOC
     /// </summary>
     /// <param name="interfaceType">the interface type</param>
     /// <param name="concreteType">the type to register</param>
-    public Registration(Type concreteType, Type interfaceType)
+    /// <param name="lifetime">the lifetime type</param>
+    public Registration(Type concreteType, Type interfaceType, Lifetime lifetime)
     {
       if (concreteType == default(object))
       {
@@ -56,7 +57,7 @@ namespace MyIOC
 
       this.InterfaceType = interfaceType;
       this.ConcreteType = concreteType;
-      this.Lifetime = Lifetime.Transient;
+      this.Lifetime = lifetime;
     }
 
     /// <summary>

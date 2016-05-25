@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MyIOCTests</name>
+    </assembly>
+    <members>
+        <member name="T:MyIOCTests.MyIOCTests">
+            <summary>
+            the main test class
+            </summary>
+        </member>
+        <member name="M:MyIOCTests.MyIOCTests.TestComposition">
+            <summary>
+            the main test for my composition container
+            </summary>
+        </member>
+        <member name="M:MyIOCTests.MyIOCTests.TestMissingPieces">
+            <summary>
+            test for errors
+            </summary>
+        </member>
+        <member name="T:MyIOCTests.DataAccess">
+            <summary>
+            the data access class
+            </summary>
+        </member>
+        <member name="T:MyIOCTests.LegacyPart">
+            <summary>
+            the legacy part class
+            </summary>
+        </member>
+        <member name="T:MyIOCTests.LogicLayer">
+            <summary>
+            the logic layer implementation
+            </summary>
+        </member>
+        <member name="M:MyIOCTests.LogicLayer.#ctor(MyIOCTests.IDataAccess,MyIOCTests.ILegacyPart)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MyIOCTests.LogicLayer"/> class.
+            </summary>
+            <param name="dataAccess">the data access layer</param>
+            <param name="legacy">the legacy part</param>
+        </member>
+        <member name="T:MyIOCTests.StaticPeice">
+            <summary>
+            the static piece implementation
+            </summary>
+        </member>
+        <member name="P:MyIOCTests.StaticPeice.StaticCheck">
+            <summary>
+            Gets or sets the static data value
+            </summary>
+        </member>
+        <member name="T:MyIOCTests.TestController">
+            <summary>
+            the test controller
+            </summary>
+        </member>
+        <member name="F:MyIOCTests.TestController.staticPiece">
+            <summary>
+            the static piece
+            </summary>
+        </member>
+        <member name="M:MyIOCTests.TestController.#ctor(MyIOCTests.ILogicLayer,MyIOCTests.IStaticPiece)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MyIOCTests.TestController"/> class.
+            </summary>
+            <param name="logic">the logic layer</param>
+            <param name="staticPiece">a static piece</param>
+        </member>
+        <member name="M:MyIOCTests.TestController.SetStaticData(System.String)">
+            <summary>
+            set the static data to something else
+            </summary>
+            <param name="data">the new static data</param>
+        </member>
+        <member name="M:MyIOCTests.TestController.GetStaticData">
+            <summary>
+            return the staic data
+            </summary>
+            <returns>the static data</returns>
+        </member>
+        <member name="T:MyIOCTests.IDataAccess">
+            <summary>
+            the data access interface
+            </summary>
+        </member>
+        <member name="T:MyIOCTests.ILegacyPart">
+            <summary>
+            the legacy part interface
+            </summary>
+        </member>
+        <member name="T:MyIOCTests.ILogicLayer">
+            <summary>
+            the interface for legacy parts
+            </summary>
+        </member>
+        <member name="T:MyIOCTests.IStaticPiece">
+            <summary>
+            the static interface
+            </summary>
+        </member>
+        <member name="P:MyIOCTests.IStaticPiece.StaticCheck">
+            <summary>
+            Gets or sets static text
+            </summary>
+        </member>
+        <member name="T:MyIOCTests.ITestController">
+            <summary>
+            the interface for the test controller
+            </summary>
+        </member>
+        <member name="M:MyIOCTests.ITestController.SetStaticData(System.String)">
+            <summary>
+            set the static data to something else
+            </summary>
+            <param name="data">the new static data</param>
+        </member>
+    </members>
+</doc>

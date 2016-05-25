@@ -19,20 +19,22 @@
             collection of registered dependencies
             </summary>
         </member>
-        <member name="M:MyIOC.Container.Register(System.Type,System.Type)">
+        <member name="M:MyIOC.Container.Register(System.Type,System.Type,Lifetime)">
             <summary>
             register a new type
             </summary>
             <param name="type">the type to add</param>
             <param name="interfaceType">the interface type</param>
+            <param name="lifetime">the liftime type</param>
             <returns>the registration</returns>
         </member>
-        <member name="M:MyIOC.Container.Register``2">
+        <member name="M:MyIOC.Container.Register``2(Lifetime)">
             <summary>
             syntacticly nice way
             </summary>
             <typeparam name="TypeToRegister">the concrete type</typeparam>
             <typeparam name="InterfaceType">the interface type to tie it to</typeparam>
+            <param name="lifetime">the lifetime type, defaults to transient</param>
             <returns>the registration object</returns>
         </member>
         <member name="M:MyIOC.Container.RegisterSingleton``1(System.Object)">
@@ -64,6 +66,13 @@
             <param name="type">the type to look for</param>
             <returns>the registration</returns>
         </member>
+        <member name="M:MyIOC.Container.GetInstance(MyIOC.Registration)">
+            <summary>
+            get the instance of the object from the registration
+            </summary>
+            <param name="registration">the registration</param>
+            <returns>the instance</returns>
+        </member>
         <member name="T:MyIOC.Registration">
             <summary>
             the registration class
@@ -76,12 +85,13 @@
             <param name="interfaceType">the interface type</param>
             <param name="concreteObject">the type to register</param>
         </member>
-        <member name="M:MyIOC.Registration.#ctor(System.Type,System.Type)">
+        <member name="M:MyIOC.Registration.#ctor(System.Type,System.Type,Lifetime)">
             <summary>
             Initializes a new instance of the <see cref="T:MyIOC.Registration"/> class.
             </summary>
             <param name="interfaceType">the interface type</param>
             <param name="concreteType">the type to register</param>
+            <param name="lifetime">the lifetime type</param>
         </member>
         <member name="P:MyIOC.Registration.InterfaceType">
             <summary>

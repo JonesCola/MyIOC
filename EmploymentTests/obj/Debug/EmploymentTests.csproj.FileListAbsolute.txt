@@ -29,7 +29,6 @@ C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\Owin.dl
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\Microsoft.Owin.Security.Cookies.dll
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\EntityFramework.dll
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
-C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\Microsoft.Web.Infrastructure.dll
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\System.Web.Razor.dll
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\System.Web.WebPages.Razor.dll
@@ -38,7 +37,6 @@ C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\System.
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\EmployeeManagement.pdb
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\MyIOC.pdb
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\MyIOC.xml
-C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\xunit.abstractions.xml
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\xunit.assert.pdb
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\xunit.assert.xml
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\xunit.core.pdb
@@ -54,7 +52,6 @@ C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\Microso
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\Microsoft.Owin.Security.Cookies.xml
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\EntityFramework.xml
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\System.Web.Razor.xml
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\System.Web.WebPages.Razor.xml
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\System.Web.WebPages.xml
@@ -66,3 +63,5 @@ C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\EntityF
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\Moq.dll
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\Moq.xml
+C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\xunit.runner.visualstudio.testadapter.dll
+C:\Users\jones\Source\Repos\TowersWatson\MyIOC\EmploymentTests\bin\Debug\xunit.runner.utility.desktop.dll
