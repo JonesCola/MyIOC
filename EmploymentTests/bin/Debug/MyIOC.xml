@@ -19,14 +19,27 @@
             collection of registered dependencies
             </summary>
         </member>
+        <member name="F:MyIOC.Container.dataRegistrations">
+            <summary>
+            collection of data type objects to use for resolving objects
+            </summary>
+        </member>
         <member name="M:MyIOC.Container.Register(System.Type,System.Type,Lifetime)">
             <summary>
             register a new type
             </summary>
             <param name="type">the type to add</param>
             <param name="interfaceType">the interface type</param>
-            <param name="lifetime">the liftime type</param>
+            <param name="lifetime">the lifetime type</param>
             <returns>the registration</returns>
+        </member>
+        <member name="M:MyIOC.Container.RegisterValue``1(System.String,``0)">
+            <summary>
+            register a value type
+            </summary>
+            <typeparam name="T">a value type</typeparam>
+            <param name="name">the name of the data point</param>
+            <param name="value">the data value</param>
         </member>
         <member name="M:MyIOC.Container.Register``2(Lifetime)">
             <summary>
@@ -72,6 +85,13 @@
             </summary>
             <param name="registration">the registration</param>
             <returns>the instance</returns>
+        </member>
+        <member name="M:MyIOC.Container.GetArgData(System.Reflection.ParameterInfo)">
+            <summary>
+            get the argument data
+            </summary>
+            <param name="parameter">the constructor parameter</param>
+            <returns>the value for the constructor</returns>
         </member>
         <member name="T:MyIOC.Registration">
             <summary>

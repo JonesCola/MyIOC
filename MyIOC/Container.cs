@@ -27,11 +27,16 @@ namespace MyIOC
     private List<Registration> registrations = new List<Registration>();
 
     /// <summary>
+    /// collection of data type objects to use for resolving objects
+    /// </summary>
+    private Dictionary<string, object> dataRegistrations = new Dictionary<string, object>();
+
+    /// <summary>
     /// register a new type
     /// </summary>
     /// <param name="type">the type to add</param>
     /// <param name="interfaceType">the interface type</param>
-    /// <param name="lifetime">the liftime type</param>
+    /// <param name="lifetime">the lifetime type</param>
     /// <returns>the registration</returns>
     public Registration Register(Type type, Type interfaceType, Lifetime lifetime)
     {
@@ -41,6 +46,17 @@ namespace MyIOC
         this.registrations.Add(registration);
         return registration;
       }
+    }
+
+    /// <summary>
+    /// register a value type
+    /// </summary>
+    /// <typeparam name="T">a value type</typeparam>
+    /// <param name="name">the name of the data point</param>
+    /// <param name="value">the data value</param>
+    public void RegisterValue<T>(string name, T value)
+    {
+      this.dataRegistrations.Add(name, value);
     }
 
     /// <summary>
@@ -133,7 +149,7 @@ namespace MyIOC
       var args = new object[parameters.Length];
       for (int i = 0; i < args.Length; i++)
       {
-        args[i] = this.Resolve(parameters[i].ParameterType);
+        args[i] = this.GetArgData(parameters[i]);
       }
 
       object ret = ctor.Invoke(args);
@@ -143,6 +159,29 @@ namespace MyIOC
       }
 
       return ret;
+    }
+
+    /// <summary>
+    /// get the argument data
+    /// </summary>
+    /// <param name="parameter">the constructor parameter</param>
+    /// <returns>the value for the constructor</returns>
+    private object GetArgData(ParameterInfo parameter)
+    {
+      if (parameter.ParameterType.IsValueType || parameter.ParameterType.Name == "String")
+      {
+        object data;
+        if (!this.dataRegistrations.TryGetValue(parameter.Name, out data))
+        {
+          throw new TypeNotRegisteredException($"No data value could be found for {parameter.Name}");
+        }
+
+        return data;
+      }
+      else
+      {
+        return this.Resolve(parameter.ParameterType);
+      }
     }
   }
 }

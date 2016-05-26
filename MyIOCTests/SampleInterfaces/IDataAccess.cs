@@ -15,5 +15,9 @@ namespace MyIOCTests
   /// </summary>
   public interface IDataAccess
   {
+    /// <summary>
+    /// Gets the connection string
+    /// </summary>
+    string ConStr { get; }
   }
 }

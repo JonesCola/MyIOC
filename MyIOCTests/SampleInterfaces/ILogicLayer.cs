@@ -9,5 +9,10 @@ namespace MyIOCTests
   /// </summary>
   public interface ILogicLayer
   {
+    /// <summary>
+    /// retrieve the connection string
+    /// </summary>
+    /// <returns>normally would never do this but this is a good test</returns>
+    string GetConnection();
   }
 }

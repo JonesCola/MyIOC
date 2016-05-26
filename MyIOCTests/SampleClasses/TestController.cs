@@ -15,6 +15,11 @@ namespace MyIOCTests
     private IStaticPiece staticPiece;
 
     /// <summary>
+    /// the logic layer
+    /// </summary>
+    private ILogicLayer logicLayer;
+
+    /// <summary>
     /// Initializes a new instance of the <see cref="TestController"/> class.
     /// </summary>
     /// <param name="logic">the logic layer</param>
@@ -22,6 +27,7 @@ namespace MyIOCTests
     public TestController(ILogicLayer logic, IStaticPiece staticPiece)
     {
       this.staticPiece = staticPiece;
+      this.logicLayer = logic;
     }
 
     /// <summary>
@@ -40,6 +46,15 @@ namespace MyIOCTests
     public string GetStaticData()
     {
       return this.staticPiece.StaticCheck;
+    }
+
+    /// <summary>
+    /// get the connection from the database layer
+    /// </summary>
+    /// <returns>the connection</returns>
+    public string GetConnection()
+    {
+      return this.logicLayer.GetConnection();
     }
   }
 }

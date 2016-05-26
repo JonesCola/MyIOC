@@ -24,9 +24,35 @@
             test for errors
             </summary>
         </member>
+        <member name="M:MyIOCTests.MyIOCTests.TestMissingData">
+            <summary>
+            a test for missing data types not being set
+            </summary>
+        </member>
+        <member name="M:MyIOCTests.MyIOCTests.TestDataComposition">
+            <summary>
+            test that the connection string got set correctly
+            </summary>
+        </member>
         <member name="T:MyIOCTests.DataAccess">
             <summary>
             the data access class
+            </summary>
+        </member>
+        <member name="F:MyIOCTests.DataAccess.conStr">
+            <summary>
+            the connection string
+            </summary>
+        </member>
+        <member name="M:MyIOCTests.DataAccess.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MyIOCTests.DataAccess"/> class.
+            </summary>
+            <param name="connection">the connection string to the data</param>
+        </member>
+        <member name="P:MyIOCTests.DataAccess.ConStr">
+            <summary>
+            Gets or sets the connection string
             </summary>
         </member>
         <member name="T:MyIOCTests.LegacyPart">
@@ -39,12 +65,23 @@
             the logic layer implementation
             </summary>
         </member>
+        <member name="F:MyIOCTests.LogicLayer.dataAccess">
+            <summary>
+            the data access
+            </summary>
+        </member>
         <member name="M:MyIOCTests.LogicLayer.#ctor(MyIOCTests.IDataAccess,MyIOCTests.ILegacyPart)">
             <summary>
             Initializes a new instance of the <see cref="T:MyIOCTests.LogicLayer"/> class.
             </summary>
             <param name="dataAccess">the data access layer</param>
             <param name="legacy">the legacy part</param>
+        </member>
+        <member name="M:MyIOCTests.LogicLayer.GetConnection">
+            <summary>
+            retrieve the connection string
+            </summary>
+            <returns>normally would never do this but this is a good test</returns>
         </member>
         <member name="T:MyIOCTests.StaticPeice">
             <summary>
@@ -66,6 +103,11 @@
             the static piece
             </summary>
         </member>
+        <member name="F:MyIOCTests.TestController.logicLayer">
+            <summary>
+            the logic layer
+            </summary>
+        </member>
         <member name="M:MyIOCTests.TestController.#ctor(MyIOCTests.ILogicLayer,MyIOCTests.IStaticPiece)">
             <summary>
             Initializes a new instance of the <see cref="T:MyIOCTests.TestController"/> class.
@@ -85,9 +127,20 @@
             </summary>
             <returns>the static data</returns>
         </member>
+        <member name="M:MyIOCTests.TestController.GetConnection">
+            <summary>
+            get the connection from the database layer
+            </summary>
+            <returns>the connection</returns>
+        </member>
         <member name="T:MyIOCTests.IDataAccess">
             <summary>
             the data access interface
+            </summary>
+        </member>
+        <member name="P:MyIOCTests.IDataAccess.ConStr">
+            <summary>
+            Gets the connection string
             </summary>
         </member>
         <member name="T:MyIOCTests.ILegacyPart">
@@ -99,6 +152,12 @@
             <summary>
             the interface for legacy parts
             </summary>
+        </member>
+        <member name="M:MyIOCTests.ILogicLayer.GetConnection">
+            <summary>
+            retrieve the connection string
+            </summary>
+            <returns>normally would never do this but this is a good test</returns>
         </member>
         <member name="T:MyIOCTests.IStaticPiece">
             <summary>
