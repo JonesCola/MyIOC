@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="MockObjects\MyDBSet.cs" />
     <Compile Include="MockObjects\MyEmployeeContext.cs" />
+    <Compile Include="MockObjects\TestEmployeeDbSet.cs" />
     <Compile Include="Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

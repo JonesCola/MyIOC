@@ -123,13 +123,14 @@
         </member>
         <member name="M:MyIOCTests.TestController.GetStaticData">
             <summary>
-            return the staic data
+            return the static data
             </summary>
             <returns>the static data</returns>
         </member>
         <member name="M:MyIOCTests.TestController.GetConnection">
             <summary>
             get the connection from the database layer
+            (wouldn't need this ever but it's a nice test)
             </summary>
             <returns>the connection</returns>
         </member>

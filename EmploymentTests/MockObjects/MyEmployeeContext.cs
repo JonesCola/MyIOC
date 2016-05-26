@@ -10,17 +10,27 @@ using System.Data.Entity.Infrastructure;
 namespace EmploymentTests
 {
   /// <summary>
-  /// 
+  /// my mock for the database context
   /// </summary>
   internal class MyEmployeeContext : IEmployeeManagementContext
   {
-    private TestDbSet<Employee> employees = new TestDbSet<Employee>();
+    /// <summary>
+    /// the collection of dummy data
+    /// </summary>
+    private TestEmployeeDbSet employees = new TestEmployeeDbSet();
 
+    /// <summary>
+    /// create a new instance
+    /// </summary>
     public MyEmployeeContext()
     {
       this.employees.Add(new Employee { FullName = "Mr. Mcgoo", ID = 1, Number = 17 });
+      this.employees.Add(new Employee { FullName = "Pink Panther", ID = 2, Number = 123 });
     }
 
+    /// <summary>
+    /// the Employees
+    /// </summary>
     public DbSet<Employee> Employees
     {
       get
@@ -33,18 +43,26 @@ namespace EmploymentTests
       }
     }
 
+    /// <summary>
+    /// cleanup the thing
+    /// </summary>
     public void Dispose()
     {
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="entity"></param>
+    /// <returns></returns>
     public DbEntityEntry Entry(object entity)
     {
-      return (DbEntityEntry)this.employees.Where(x => x == entity);
+      return (DbEntityEntry<Employee>)this.employees.Where(x => x == entity);
     }
 
     public int SaveChanges()
     {
-      return 1;
+      return 0;
     }
   }
 }

@@ -45,6 +45,7 @@ namespace MyIOCTests
       container.Register<LogicLayer, ILogicLayer>();
       container.Register<TestController, ITestController>();
       container.Register<StaticPeice, IStaticPiece>(Lifetime.Transient);
+      container.RegisterValue("connection", "Some Connection String");
       TestController controller = container.Resolve<TestController>();
       controller.SetStaticData(staticString);
       controller = container.Resolve<TestController>();

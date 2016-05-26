@@ -40,7 +40,7 @@ namespace MyIOCTests
     }
 
     /// <summary>
-    /// return the staic data
+    /// return the static data
     /// </summary>
     /// <returns>the static data</returns>
     public string GetStaticData()
@@ -50,6 +50,7 @@ namespace MyIOCTests
 
     /// <summary>
     /// get the connection from the database layer
+    /// (wouldn't need this ever but it's a nice test)
     /// </summary>
     /// <returns>the connection</returns>
     public string GetConnection()
